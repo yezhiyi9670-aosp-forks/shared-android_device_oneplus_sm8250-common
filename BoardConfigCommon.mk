@@ -92,7 +92,6 @@ BOARD_RAMDISK_USE_LZ4 := true
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8250
 TARGET_KERNEL_CONFIG := vendor/kona-perf_defconfig vendor/oplus.config
 TARGET_KERNEL_NO_GCC := true
-# TARGET_KERNEL_CONFIG += vendor/lto.config # Enable LTO optionally, it may need recompile host kernel
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
