@@ -60,8 +60,8 @@ int32_t getTorchMaxStrengthLevelExt() {
         hw_max_value = std::min(hw_max_value, get(node, 0));
     }
 
-    // 200 (out of 500) is a sane max brightness
-    return int(0.4 * hw_max_value);
+    // 160 (out of 500) is a sane max brightness
+    return int(0.32 * hw_max_value);
 }
 
 int32_t getTorchStrengthLevelExt() {
