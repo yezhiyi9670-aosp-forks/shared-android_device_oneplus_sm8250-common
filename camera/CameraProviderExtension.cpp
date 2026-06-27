@@ -7,6 +7,7 @@
 #include "CameraProviderExtension.h"
 
 #include <fstream>
+#include <algorithm>
 
 #define TORCH_BRIGHTNESS "brightness"
 #define TORCH_MAX_BRIGHTNESS "max_brightness"
@@ -47,12 +48,20 @@ bool supportsSetTorchModeExt() {
 }
 
 int32_t getTorchDefaultStrengthLevelExt() {
-    return 80;
+    int32_t max_value = getTorchMaxStrengthLevelExt();
+    return std::min(80, max_value);
 }
 
 int32_t getTorchMaxStrengthLevelExt() {
+    // Note: In our device, both LEDs has same maximum value
+    int32_t hw_max_value = 2147483647;
+    for (auto& path : kTorchLedPaths) {
+        auto node = path + "/" + TORCH_MAX_BRIGHTNESS;
+        hw_max_value = std::min(hw_max_value, get(node, 0));
+    }
+
     // 200 (out of 500) is a sane max brightness
-    return 200;
+    return int(0.4 * hw_max_value);
 }
 
 int32_t getTorchStrengthLevelExt() {
