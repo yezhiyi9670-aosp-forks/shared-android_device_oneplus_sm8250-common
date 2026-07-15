@@ -72,8 +72,8 @@ namespace vibrator {
 #define LED_DEVICE "/sys/class/leds/vibrator"
 #define LED_MAX_MAGNITUDE 2400 // maximum vmax is 2400
 #define LED_MIN_MAGNITUDE 800
-#define LED_LIGHT_MAGNITUDE 900
-#define LED_MEDIUM_MAGNITUDE 1600
+#define LED_LIGHT_MAGNITUDE 1000
+#define LED_MEDIUM_MAGNITUDE 1700
 #define LED_STRONG_MAGNITUDE LED_MAX_MAGNITUDE
 
 InputFFDevice::InputFFDevice() {
