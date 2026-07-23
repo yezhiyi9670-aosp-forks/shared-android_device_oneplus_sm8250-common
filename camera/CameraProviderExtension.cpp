@@ -44,11 +44,12 @@ bool supportsTorchStrengthControlExt() {
 }
 
 bool supportsSetTorchModeExt() {
-    return false;
+    return true;
 }
 
 int32_t getTorchDefaultStrengthLevelExt() {
     int32_t max_value = getTorchMaxStrengthLevelExt();
+    // 80 is stock default strength for flashlight
     return std::min(80, max_value);
 }
 
@@ -72,10 +73,13 @@ int32_t getTorchStrengthLevelExt() {
 }
 
 void setTorchStrengthLevelExt(int32_t torchStrength, bool enabled) {
-    set(TOGGLE_SWITCH, 0);
+    if (!enabled)
+        set(TOGGLE_SWITCH, 0);
+    int32_t max_value = getTorchMaxStrengthLevelExt();
+    int32_t clamped_value = std::max(0, std::min(max_value, torchStrength));
     for (auto& path : kTorchLedPaths) {
         auto node = path + "/" + TORCH_BRIGHTNESS;
-        set(node, torchStrength);
+        set(node, clamped_value);
     }
     if (enabled)
         set(TOGGLE_SWITCH, 255);
