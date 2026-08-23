@@ -9,4 +9,8 @@
           vibrator is capable of subtle vibrations -->
      <bool name="config_vibrateOnIconAnimation">true</bool>
 
+     <!-- The UDFPS of the devices in this family is known to be fast, so a shorter illumination
+          safety timeout is sufficient. -->
+     <integer name="config_udfpsIlluminationTimeout">2000</integer>
+
 </resources>
