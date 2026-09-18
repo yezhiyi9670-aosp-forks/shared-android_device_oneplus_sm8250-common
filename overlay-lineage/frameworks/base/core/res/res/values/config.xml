@@ -54,7 +54,7 @@
     <bool name="config_mediaControlsTurbulenceByDefault">false</bool>
 
     <!-- The amount to scale fullscreen snapshots for Overview and snapshot starting windows. -->
-    <item name="config_highResTaskSnapshotScale" format="float" type="dimen">0.7</item>
+    <item name="config_highResTaskSnapshotScale" format="float" type="dimen">1.0</item>
 
     <!-- The list of packages to automatically opt in of fresh rate suppressing by small area
          detection. Format of this array should be packageName:threshold and threshold value should
